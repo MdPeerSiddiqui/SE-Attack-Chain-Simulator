@@ -1,0 +1,132 @@
+{
+  "simulation_id": "SIM-KILLCHAIN-1794061026",
+  "started_at": "2026-11-07T19:47:06.054284",
+  "target_org": "Sqrock IT Solutions",
+  "target_domain": "sqrock-solutions.com",
+  "phases": {
+    "phase_1_recon": {
+      "phase_name": "Phase 1: Reconnaissance & Target Footprinting",
+      "mitre_id": "TA0043 (Reconnaissance) / T1593 (Search Open Websites)",
+      "status": "COMPLETED",
+      "timestamp": "2026-11-07T19:47:06.054300",
+      "target_domain": "sqrock-solutions.com",
+      "discovered_mx_records": [
+        "mail.sqrock-solutions.com",
+        "mx2.sqrock-solutions.com"
+      ],
+      "enumerated_employees": [
+        {
+          "name": "John Smith",
+          "role": "Senior Financial Controller",
+          "email": "j.smith@sqrock-solutions.com",
+          "risk": "CRITICAL"
+        },
+        {
+          "name": "Sarah Connor",
+          "role": "Systems Administrator",
+          "email": "s.connor@sqrock-solutions.com",
+          "risk": "HIGH"
+        },
+        {
+          "name": "Mohammed Peer Siddiqui",
+          "role": "Lead Security Engineer",
+          "email": "m.siddiqui@sqrock-solutions.com",
+          "risk": "LOW"
+        }
+      ],
+      "identified_subdomains": [
+        "portal.sqrock-solutions.com",
+        "vpn.sqrock-solutions.com",
+        "payroll.sqrock-solutions.com"
+      ],
+      "vulnerability_notes": "Financial controller j.smith identified with public executive profile and external portal login access."
+    },
+    "phase_2_weaponization": {
+      "phase_name": "Phase 2: Weaponization & Spear Phishing Lure Crafting",
+      "mitre_id": "TA0042 (Resource Development) / T1566.002 (Spearphishing Link)",
+      "status": "COMPLETED",
+      "timestamp": "2026-11-07T19:47:06.054364",
+      "target_victim": "j.smith@sqrock-solutions.com",
+      "psychological_trigger": "Urgency & Financial Authority (NIST SP 800-50 Principle)",
+      "spoofed_sender": "corporate-payroll@sqrock-portal.com",
+      "subject": "URGENT: Mandatory Direct Deposit Audit & Tax Compliance Notice",
+      "harvesting_url": "https://sqrock-verify-portal.net/auth?token=b1beb18990",
+      "tracking_token": "b1beb18990",
+      "email_body_preview": "Attention John: Failure to verify your employee banking credentials within 24 hours will result in suspension of current payroll disbursements. Click here to confirm identity."
+    },
+    "phase_3_exploitation": {
+      "phase_name": "Phase 3: Delivery, Exploitation & Credential Harvesting",
+      "mitre_id": "TA0001 (Initial Access) / T1204.001 (User Execution: Malicious Link)",
+      "status": "COMPLETED",
+      "timestamp": "2026-11-07T19:47:06.054367",
+      "victim_clicked": true,
+      "harvested_credentials": {
+        "username": "j.smith@sqrock-solutions.com",
+        "password_hash": "a5c95e887dbf1c0a...",
+        "source_client_ip": "10.0.4.15",
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0.0.0"
+      },
+      "tripwire_detonation": "Canary token det_token_8849 activated at 19:48:02 UTC.",
+      "posture": "COMPROMISED (Victim submitted credentials to spoofed portal)"
+    },
+    "phase_4_siem": {
+      "phase_name": "Phase 4: Telemetry Correlation & SIEM Threat Detection",
+      "mitre_id": "TA0006 (Credential Access) / T1110 (Brute Force) / T1114.003 (Mail Forwarding)",
+      "status": "COMPLETED",
+      "timestamp": "2026-11-07T19:47:06.054395",
+      "correlated_alerts": [
+        {
+          "alert_id": "ALRT-BF-198_51_100_42",
+          "severity": "HIGH",
+          "tactic": "Credential Access",
+          "description": "5 consecutive failed authentication attempts against j.smith from 198.51.100.42"
+        },
+        {
+          "alert_id": "ALRT-ATO-j.smith",
+          "severity": "CRITICAL",
+          "tactic": "Account Takeover",
+          "description": "Adversary successfully authenticated followed by creation of rule=forward_all"
+        },
+        {
+          "alert_id": "ALRT-EXCH-081824",
+          "severity": "CRITICAL",
+          "tactic": "Collection / Exfiltration",
+          "description": "Exchange InboxRule AutoArchive redirects all emails to attacker-drop@proton.me"
+        }
+      ],
+      "total_alerts": 3,
+      "escalation": "CRITICAL P1 ALERT DISPATCHED TO SOAR ORCHESTRATOR"
+    },
+    "phase_5_containment": {
+      "phase_name": "Phase 5: Automated Containment & SOAR Playbook Execution",
+      "mitre_id": "TA0040 (Impact Mitigation) / NIST SP 800-61 Rev.2 Section 3.3",
+      "status": "COMPLETED",
+      "timestamp": "2026-11-07T19:47:06.054399",
+      "actions_executed": [
+        {
+          "action": "IDENTITY_CONTAINMENT",
+          "target": "j.smith@sqrock-solutions.com",
+          "result": "Disabled AD account, revoked Kerberos TGTs and OAuth refresh tokens."
+        },
+        {
+          "action": "MAILBOX_CONTAINMENT",
+          "target": "AutoArchive Forwarding Rule",
+          "result": "Purged rule=forward_all to attacker-drop@proton.me and isolated phishing lure."
+        },
+        {
+          "action": "NETWORK_PERIMETER_BLOCK",
+          "target": "198.51.100.42",
+          "result": "Injected edge firewall drop rule: iptables -I INPUT -s 198.51.100.42 -j DROP."
+        },
+        {
+          "action": "EVIDENCE_SANDBOXING",
+          "target": "evidence_phish_lure.eml",
+          "result": "Preserved artifact into quarantine/ with SHA-256 digest."
+        }
+      ],
+      "final_containment_latency_seconds": 1.42,
+      "remediation_status": "FULL CONTAINMENT ACHIEVED - BLAST RADIUS NEUTRALIZED"
+    }
+  },
+  "status": "SIMULATION_SUCCESSFULLY_CONTAINED"
+}
