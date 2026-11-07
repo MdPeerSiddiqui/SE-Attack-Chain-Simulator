@@ -1,21 +1,21 @@
 ================================================================================
     SQROCK IT SOLUTIONS - END-TO-END SOCIAL ENGINEERING ATTACK CHAIN AUDIT
 ================================================================================
-Simulation ID       : SIM-KILLCHAIN-1794061026
+Simulation ID       : SIM-KILLCHAIN-1794061184
 Target Organization : Sqrock IT Solutions
 Target Domain       : sqrock-solutions.com
-Execution Started   : 2026-11-07T19:47:06.054284
+Execution Started   : 2026-11-07T19:49:44.146618
 Final Posture Status: SIMULATION_SUCCESSFULLY_CONTAINED
 --------------------------------------------------------------------------------
 
 [COMPLETED] Phase 1: Reconnaissance & Target Footprinting
   MITRE ATT&CK : TA0043 (Reconnaissance) / T1593 (Search Open Websites)
-  Timestamp    : 2026-11-07T19:47:06.054300
+  Timestamp    : 2026-11-07T19:49:44.146630
   Details      : {
     "phase_name": "Phase 1: Reconnaissance & Target Footprinting",
     "mitre_id": "TA0043 (Reconnaissance) / T1593 (Search Open Websites)",
     "status": "COMPLETED",
-    "timestamp": "2026-11-07T19:47:06.054300",
+    "timestamp": "2026-11-07T19:49:44.146630",
     "target_domain": "sqrock-solutions.com",
     "discovered_mx_records": [
         "mail.sqrock-solutions.com",
@@ -52,30 +52,30 @@ Final Posture Status: SIMULATION_SUCCESSFULLY_CONTAINED
 
 [COMPLETED] Phase 2: Weaponization & Spear Phishing Lure Crafting
   MITRE ATT&CK : TA0042 (Resource Development) / T1566.002 (Spearphishing Link)
-  Timestamp    : 2026-11-07T19:47:06.054364
+  Timestamp    : 2026-11-07T19:49:44.146690
   Details      : {
     "phase_name": "Phase 2: Weaponization & Spear Phishing Lure Crafting",
     "mitre_id": "TA0042 (Resource Development) / T1566.002 (Spearphishing Link)",
     "status": "COMPLETED",
-    "timestamp": "2026-11-07T19:47:06.054364",
+    "timestamp": "2026-11-07T19:49:44.146690",
     "target_victim": "j.smith@sqrock-solutions.com",
     "psychological_trigger": "Urgency & Financial Authority (NIST SP 800-50 Principle)",
     "spoofed_sender": "corporate-payroll@sqrock-portal.com",
     "subject": "URGENT: Mandatory Direct Deposit Audit & Tax Compliance Notice",
-    "harvesting_url": "https://sqrock-verify-portal.net/auth?token=b1beb18990",
-    "tracking_token": "b1beb18990",
+    "harvesting_url": "https://sqrock-verify-portal.net/auth?token=6119ec30d2",
+    "tracking_token": "6119ec30d2",
     "email_body_preview": "Attention John: Failure to verify your employee banking credentials within 24 hours will result in suspension of current payroll disbursements. Click here to confirm identity."
 }
 --------------------------------------------------------------------------------
 
 [COMPLETED] Phase 3: Delivery, Exploitation & Credential Harvesting
   MITRE ATT&CK : TA0001 (Initial Access) / T1204.001 (User Execution: Malicious Link)
-  Timestamp    : 2026-11-07T19:47:06.054367
+  Timestamp    : 2026-11-07T19:49:44.146693
   Details      : {
     "phase_name": "Phase 3: Delivery, Exploitation & Credential Harvesting",
     "mitre_id": "TA0001 (Initial Access) / T1204.001 (User Execution: Malicious Link)",
     "status": "COMPLETED",
-    "timestamp": "2026-11-07T19:47:06.054367",
+    "timestamp": "2026-11-07T19:49:44.146693",
     "victim_clicked": true,
     "harvested_credentials": {
         "username": "j.smith@sqrock-solutions.com",
@@ -90,12 +90,12 @@ Final Posture Status: SIMULATION_SUCCESSFULLY_CONTAINED
 
 [COMPLETED] Phase 4: Telemetry Correlation & SIEM Threat Detection
   MITRE ATT&CK : TA0006 (Credential Access) / T1110 (Brute Force) / T1114.003 (Mail Forwarding)
-  Timestamp    : 2026-11-07T19:47:06.054395
+  Timestamp    : 2026-11-07T19:49:44.146714
   Details      : {
     "phase_name": "Phase 4: Telemetry Correlation & SIEM Threat Detection",
     "mitre_id": "TA0006 (Credential Access) / T1110 (Brute Force) / T1114.003 (Mail Forwarding)",
     "status": "COMPLETED",
-    "timestamp": "2026-11-07T19:47:06.054395",
+    "timestamp": "2026-11-07T19:49:44.146714",
     "correlated_alerts": [
         {
             "alert_id": "ALRT-BF-198_51_100_42",
@@ -123,12 +123,12 @@ Final Posture Status: SIMULATION_SUCCESSFULLY_CONTAINED
 
 [COMPLETED] Phase 5: Automated Containment & SOAR Playbook Execution
   MITRE ATT&CK : TA0040 (Impact Mitigation) / NIST SP 800-61 Rev.2 Section 3.3
-  Timestamp    : 2026-11-07T19:47:06.054399
+  Timestamp    : 2026-11-07T19:49:44.146717
   Details      : {
     "phase_name": "Phase 5: Automated Containment & SOAR Playbook Execution",
     "mitre_id": "TA0040 (Impact Mitigation) / NIST SP 800-61 Rev.2 Section 3.3",
     "status": "COMPLETED",
-    "timestamp": "2026-11-07T19:47:06.054399",
+    "timestamp": "2026-11-07T19:49:44.146717",
     "actions_executed": [
         {
             "action": "IDENTITY_CONTAINMENT",
